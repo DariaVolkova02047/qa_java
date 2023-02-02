@@ -45,13 +45,17 @@ public class LionTest {
 
     @Test
     public void testConditionalConstructorOther() throws Exception {
-        String msg = "";
+        Lion lion = new Lion();
+        String msg = "Неизвестный вид животного, используйте значение Травоядное или Хищник";
+        Exception actualException = null;
         try {
             lionTest = new Lion("fgjhgk", felineTest);
         } catch (Exception e) {
+            actualException = e;
             msg = e.getMessage();
         }
-        Assert.assertEquals(msg, "Используйте допустимые значения пола животного - самей или самка");
+        Assert.assertEquals(msg, "Используйте допустимые значения пола животного - самец или самка");
     }
 
 }
+

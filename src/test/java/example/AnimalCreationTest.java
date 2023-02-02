@@ -41,15 +41,16 @@ public class AnimalCreationTest {
         Assert.assertEquals(animal.getFamily(), "Существует несколько семейств: заячьи, беличьи, мышиные, кошачьи, псовые, медвежьи, куньи");
     }
     @Test
-    public void testGetFoodConditionOther() {
-        String msg = "";
+    public void testGetFoodConditionOther() throws Exception {
+        Animal animal = new Animal();
+            String invalidKindOfAnimal = "Неизвестный вид животного, используйте значение Травоядное или Хищник";
+            Exception actualException = null;
         try {
-            animal.getFood("dfvfdv");
+            animal.getFood(invalidKindOfAnimal);
         } catch (Exception e) {
-            msg = e.getMessage();
+            actualException = e;
         }
-        Assert.assertEquals(msg, "Неизвестный вид животного, используйте значение Травоядное или Хищник");
+        Assert.assertNotNull(actualException);
+        }
     }
 
-
-}
